@@ -26,6 +26,15 @@ public class SampleDb {
         }
     }
 
+    public static void deleteTestTable() throws Exception {
+        Connection c = connect();
+        try {
+            c.createStatement().executeUpdate("drop table test");
+        } finally {
+            disconnect(c);
+        }
+    }
+
     public static void insertTestData(String v) throws Exception {
         Connection c = connect();
         try {
