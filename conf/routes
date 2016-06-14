@@ -11,3 +11,4 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET /test/page                      controllers.Application.page
 GET /test/create                    controllers.Application.table
 GET /test/:value                    controllers.Application.test(value:String)
+GET /test/                           controllers.Application.showAll()

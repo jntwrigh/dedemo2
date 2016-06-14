@@ -15,7 +15,7 @@
         }
       };
 
-      $("a").click(function(e) {
+      $(".additem").click(function(e) {
         e.stopImmediatePropagation();
         e.stopPropagation();
         e.preventDefault();
@@ -27,7 +27,15 @@
             .show();
         return false;
       });
+
+      $("#showall").click(function(e) {
+        e.preventDefault();
+        console.log("here")
+        $.get($(this).attr("href"), function(d) {showResult(d);});
+        return false;
+      });
     });
+
   </script>
   <style>
     ol li {
@@ -38,11 +46,15 @@
       display:block;
     }
   </style>
+
+  <a id="showall" href="@routes.Application.showAll()">showAll</a>
+
+
   <ol id="jdbcresult">
-    <li><a href="@routes.Application.table">Create table</a></li>
-    <li><a href="@routes.Application.test("Don''t insert me")">First value</a></li>
-    <li><a href="@routes.Application.test("What did I say%3F")">Second value</a></li>
-    <li><a href="@routes.Application.test("Grrr")">Third value</a></li>
+      <!-- <li><a href="@routes.Application.table">Create table</a></li> -->
+    <li><a class="additem" href="@routes.Application.test("Don''t insert me")">First value</a></li>
+    <li><a class="additem" href="@routes.Application.test("What did I say%3F")">Second value</a></li>
+    <li><a class="additem" href="@routes.Application.test("Grrr")">Third value</a></li>
     <li>End</li>
   </ol>
   <ul id="result">

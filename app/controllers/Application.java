@@ -39,5 +39,12 @@ public class Application extends Controller {
             return internalServerError(e.getMessage());
         }
     }
-
+    public static Result showAll() {
+        try {
+            List<String> vs = SampleDb.getTestData();
+            return ok(Json.toJson(vs));
+        } catch (Exception e) {
+            return internalServerError(e.getMessage());
+        }
+    }
 }
